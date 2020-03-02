@@ -1,0 +1,22 @@
+<HTML>
+  <HEAD>
+    <SCRIPT SRC="/socket.io/socket.io.js"></SCRIPT>
+  </HEAD>
+
+  <BODY>
+    <SCRIPT>
+      var socket = io();
+
+      function ping() {
+          socket.emit('message', 'X');
+          setTimeout(function () { socket.emit('message', 'Y'); }, 500);
+      };
+
+      socket.on('arduino', function(msg) {
+          console.log("From Arduino: " + msg);
+      });
+
+      setInterval(ping, 2000);
+    </SCRIPT>
+  </BODY>
+</HTML>
