@@ -10,9 +10,9 @@ void loop() {
   while (Serial.available() > 0) {
     int x = Serial.read();
     if (x == 'X') {
-      digitalWrite(13, 1);
+      digitalWrite(LED_BUILTIN, 1);
     } else {
-      digitalWrite(13, 0);
+      digitalWrite(LED_BUILTIN, 0);
     }
   }
 
