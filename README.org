@@ -23,4 +23,4 @@ Feedback is also given in the main HTML page using =jQuery= (which is loaded fro
 
 Issues: this all works fine for single-byte messages with no implicit state, but it not reliable for more complex data since there's no guarantee that Arduino and host will reliably synchronise at the message start points.
 
-TODO: integrate =[arduino-clj](https://github.com/cassiel/arduino-clj)= and =[arduino-polyglot](https://github.com/cassiel/arduino-polyglot)= for more complex data.
+TODO: integrate =[[https://github.com/cassiel/arduino-clj][arduino-clj]]= and =[[https://github.com/cassiel/arduino-polyglot][arduino-polyglot]]= for more complex data.
