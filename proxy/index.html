@@ -1,22 +1,40 @@
 <HTML>
   <HEAD>
     <SCRIPT SRC="/socket.io/socket.io.js"></SCRIPT>
+
+    <SCRIPT
+      SRC="https://code.jquery.com/jquery-3.4.1.min.js"
+      INTEGRITY="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      CROSSORIGIN="anonymous"></SCRIPT>
+
+    <STYLE>
+      H3 > span { color: red; }
+    </STYLE>
   </HEAD>
 
   <BODY>
+    <H3 ID="to-arduino">To Arduino: <SPAN>...</SPAN></H3>
+    <H3 ID="from-arduino">From Arduino: <SPAN>...</SPAN></H3>
     <SCRIPT>
-      var socket = io();
+      $(document).ready(function () {
+          var socket = io();
 
-      function ping() {
-          socket.emit('message', 'X');
-          setTimeout(function () { socket.emit('message', 'Y'); }, 500);
-      };
+          function ping() {
+              $("H3#to-arduino > span").text("X");
+              socket.emit('message', 'X');
+              setTimeout(function () {
+                  $("H3#to-arduino > span").text("Y");
+                  socket.emit('message', 'Y');
+              }, 500);
+          };
 
-      socket.on('arduino', function(msg) {
-          console.log("From Arduino: " + msg);
+          socket.on('arduino', function(msg) {
+              console.log("From Arduino: " + msg);
+              $("H3#from-arduino > span").text(msg);
+          });
+
+          setInterval(ping, 2000);
       });
-
-      setInterval(ping, 2000);
     </SCRIPT>
   </BODY>
 </HTML>
