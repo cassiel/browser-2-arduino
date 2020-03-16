@@ -5,7 +5,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var SerialPort = require('serialport');
 
-const port = new SerialPort("/dev/cu.usbmodem146401");
+const port = new SerialPort("/dev/cu.usbmodem1454101");
 
 port.open(function (err) {
     if (err) {
